@@ -208,12 +208,13 @@ all: $(FW_STAGING_DIR) $(FW_DIR) $(GEN_DIR) $(FW_ZIP)
 
 cmake-out: $(BUILD_DIR) $(SDKCONFIG_DEFAULTS_OUT) $(APP_SOURCES) $(MGOS_SOURCES) $(GEN_SOURCES) $(MANIFEST_FINAL)
 	cd $(BUILD_DIR) && \
-	  cmake -DCOMPONENTS="$(COMPONENTS)" \
-	        -DEXTRA_COMPONENT_DIRS="$(APP_PATH)/components" \
+	  cmake -DCOMPONENTS="esp_asf $(COMPONENTS)" \
 	        -DFFI_EXPORTS_C="$(FFI_EXPORTS_C)" \
 	        -DSDKCONFIG="$(SDKCONFIG_OUT)" \
 	        -DSDKCONFIG_DEFAULTS="$(SDKCONFIG_DEFAULTS_OUT)" \
 	        $(MGOS_ESP_PATH)
+
+	        #-DEXTRA_COMPONENT_DIRS="$(APP_PATH)/components" \
 
 $(APP_BIN): cmake-out
 	$(MAKE) -C $(BUILD_DIR) all

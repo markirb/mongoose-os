@@ -111,7 +111,7 @@ MGOS_RO_VARS_C = $(GEN_DIR)/mgos_ro_vars.c
 APP_BIN = $(BUILD_DIR)/$(APP).bin
 BOOTLOADER_BIN = $(BUILD_DIR)/bootloader/bootloader.bin
 PARTITION_TABLE_BIN = $(BUILD_DIR)/partition_table/partition-table.bin
-PARTITION_TABLE_OFFSET = 0x8000
+PARTITION_TABLE_OFFSET ?= 0x8000
 
 # TODO(rojer): We should really stop doing this.
 APP_SOURCE_DIRS = $(sort $(dir $(APP_SOURCES)))
